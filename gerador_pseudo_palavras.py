@@ -157,7 +157,7 @@ def filtrar(escrever):
 
     t2 = len(palavras) # regista o tamanho final
 
-    print('\n iliminadas', (t1 - t2), 'palavras') # quantas palavras foram eliminadas
+    print('\n eliminadas', (t1 - t2), 'palavras') # quantas palavras foram eliminadas
     print('de', t1, 'para', t2,'\n') # o tamanho
 
     if escrever:
@@ -174,7 +174,9 @@ def teste_palavras(p):
 
     if      p[-1] in ['â', 'ô', 'ê', 'ã', 'õ', 'é', 'è', 'ú', 'ù', 'û','p','q','w','b','t','y','d','f','g','h','j','k','ç','x','c','v','n'] \
         or (p[-2:] not in ['ns'] and p[-1] in lista_final and p[-2] in lista_final) \
-        or contem(p, ['th', 'zs', 'zm', 'dm', 'dn', 'w', 'k', 'gd', 'gh', 'qe', 'quê', 'ps', 'pn','qu','mn','nm','rm','sh','çae','tm','mt','ms','não','qué','bm','ãa','bs','bd','y','mf','mv','cb','cx','pt','tã','dj','à','pb','ft','tf','ft']) \
+        or contem(p, ['th', 'zs', 'zm', 'dm', 'dn', 'w', 'k', 'gd', 'gh', 'qe', 'quê', 'ps', 'pn','qu','mn','nm'
+                        ,'rm','sh','çae','tm','mt','ms','não','qué','bm','ãa','bs','bd','y','mf','mv','cb','cx','pt'
+                        ,'tã','dj','à','pb','ft','tf','ft''xv','vx','df','ée','eé','ôo','oô']) \
         or duplicado(p, ['ç']) \
         or duplicado(p, ['á', 'à', 'â', 'é', 'è', 'ê', 'ó', 'ò', 'í', 'ì', 'î', 'ú', 'ù', 'û', 'ã', 'õ'])\
         or p[:2] == 'lh':
@@ -268,7 +270,7 @@ def gerar_pseudo_palavras(quantidade):
     #bom
     def tratamento_final(palavras):
 
-        print('a remover multiplos')
+        print('\n a remover multiplos')
         t1 = len(palavras)
         palavras = list(set(palavras))
         t2 = len(palavras)
@@ -310,16 +312,15 @@ def gerar_pseudo_palavras(quantidade):
 
         #escreve a palavra
         g += 1
-        print(g)
+        #print(g)
 
     # tratamento final
     palavras = tratamento_final(palavras)
 
-
+    # guardar palavras
     f = open('peseudo_palavras.txt', 'w', encoding='UTF-16')
     f.write(palavras)
     f.close()
-
 
 def analizar():
     fich = open('livro_peseudo_palavras.txt','r',encoding='UTF-16')
@@ -329,5 +330,8 @@ def analizar():
     vars = processar(text)
 
     fich = open('info_gerador_de_palavras.txt','w',encoding='UTF-16')
-    for var in vars:fich.write(var.__repr__()+'\n')
+    for var in vars:
+        fich.write(var.__repr__()+'\n')
     fich.close()
+
+gerar_pseudo_palavras(200)
