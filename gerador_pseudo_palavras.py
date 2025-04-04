@@ -322,7 +322,7 @@ def gerar_pseudo_palavras(quantidade):
     f.write(palavras)
     f.close()
 
-def analizar():
+def analisar():
     fich = open('livro_peseudo_palavras.txt','r',encoding='UTF-16')
     text = fich.read()
     fich.close()
